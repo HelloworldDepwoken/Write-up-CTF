@@ -8,15 +8,19 @@ To connect to the target machine, I used OpenVPN with the configuration file pro
 
 ![OpenVPN connection](img/openVPN.png)
 
-after you got the startpoint File i open terminal and Run Sudo openVPN [user/path/file name]
+After downloading the Starting Point VPN configuration file, I opened the terminal and ran the following command to connect to the VPN.
+
+```bash
+sudo openvpn <path-to-file>
+```
 
 ![Terminal OpenVPN connection](img/OpenVPNconnect.png)
 
-To get the target's IP address, press the **Start Machine** button on the HTB website.
+To get the target's IP address, I pressed the **Start Machine** button on the HTB website.
 
 ![Get IP address](img/Start.png)
 
-after we wait a while the target ip will show 
+After waiting for a while, the target machine's IP address appeared on the page.
 
 ![IP address](img/IP.png)
 
@@ -28,9 +32,9 @@ ping <TARGET_IP>
 
 ![Ping response](img/ping.png)
 
-If the target responds to the ping requests, it means that the machine is reachable over the network. You can stop the command by pressing `Ctrl + C`.
+If the target responds to the ping requests, it indicates that the machine is reachable over the network. You can stop the command by pressing `Ctrl + C`. However, some machines block ping requests, so no response does not always mean the machine is offline.
 
-Now that the connection is working, we are ready to start investigating the target machine.
+Now that the connection was set up, I was ready to start investigating the target machine.
 
 ## 2. Tools Used
 
@@ -43,7 +47,7 @@ Now that the connection is working, we are ready to start investigating the targ
 |---|---|
 | `ping <TARGET_IP>` | Check whether the target responds to network requests. |
 | `nmap -sV <TARGET_IP>` | Scan for open ports and identify running services and their versions where possible. |
-| `telnet <TARGET_IP> 23` | Connect to the Telnet service on port 23. |
+| `telnet <TARGET_IP> ` | Connect to the Telnet service on port 23. |
 | `ls` | List files and directories in the current directory. |
 | `cat flag.txt` | Display the contents of the flag file. |
 
@@ -59,7 +63,7 @@ nmap -sV <TARGET_IP>
 
 ![Nmap scan results](img/nmap.png)
 
-From the scan results, we can see that the target has an open Telnet service on port 23. Telnet allows users to access a remote machine through a text-based terminal.
+From the scan results, I found that the target had an open Telnet service on port 23. Telnet allows users to access a remote machine through a text-based terminal.
 
 Since the service was accessible, I decided to investigate whether I could connect to it.
 
@@ -68,7 +72,7 @@ Since the service was accessible, I decided to investigate whether I could conne
 I used Telnet to connect to the target machine.
 
 ```bash
-telnet <TARGET_IP> 23
+telnet <TARGET_IP> 
 ```
 
 ![Telnet connection](img/Telnet.png)
@@ -89,7 +93,7 @@ This revealed a serious authentication weakness. Since the root account has exte
 
 ### 4.4 Finding the Flag
 
-After gaining access, I used the `ls` command to list the files in the current directory and see whether I could find what I was looking for.
+After gaining access, I used the `ls` command to list the files in the current directory and check whether I could find what I was looking for.
 
 ```bash
 ls
@@ -103,9 +107,9 @@ The listing showed a file named `flag.txt`. This was the file I needed to read t
 cat flag.txt
 ```
 
-![Flag output](img/cat.png)
+![Flag output](img/Cat.png)
 
-The file contained the flag needed to complete the challenge. Keep in mind that the filename may be different in other challenges, so you should check the directory listing rather than assume the file will always be named `flag.txt`.
+The file contained the flag needed to complete the challenge. Keep in mind that filenames may differ between challenges, so check the directory listing instead of assuming the file will always be named `flag.txt`.
 
 ## 5. Findings
 
