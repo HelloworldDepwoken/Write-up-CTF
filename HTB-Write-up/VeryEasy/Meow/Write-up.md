@@ -6,7 +6,7 @@
 
 To connect to the target machine, I used OpenVPN with the configuration file provided by Hack The Box (HTB). Alternatively, you can use Pwnbox to access the lab environment without setting up a VPN on your own computer.
 
-![OpenVPN connection](images/openvpn.png)
+![OpenVPN connection](img/openVPN.png)
 
 To get the target's IP address, press the **Start Machine** button on the HTB website.
 
