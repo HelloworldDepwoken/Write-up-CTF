@@ -49,7 +49,7 @@ Now that the connection was set up, I was ready to start investigating the targe
 | `nmap -sV <TARGET_IP>` | Scan for open ports and identify running services and their versions where possible. |
 | `telnet <TARGET_IP> ` | Connect to the Telnet service on port 23. |
 | `ls` | List files and directories in the current directory. |
-| `cat flag.txt` | Display the contents of the flag file. |
+| `cat <TARGET_files>` | Display the contents of the flag file. |
 
 ## 4. Enumeration
 
