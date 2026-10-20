@@ -8,9 +8,17 @@ To connect to the target machine, I used OpenVPN with the configuration file pro
 
 ![OpenVPN connection](img/openVPN.png)
 
+after you got the startpoint File i open terminal and Run Sudo openVPN [user/path/file name]
+
+![Terminal OpenVPN connection](img/OpenVPNconnect.png)
+
 To get the target's IP address, press the **Start Machine** button on the HTB website.
 
-![Target IP address](images/target-ip.png)
+![Get IP address](img/Start.png)
+
+after we wait a while the target ip will show 
+
+![IP address](img/IP.png)
 
 After connecting to the VPN, I used the `ping` command with the target's IP address to check whether the machine was reachable.
 
@@ -18,7 +26,7 @@ After connecting to the VPN, I used the `ping` command with the target's IP addr
 ping <TARGET_IP>
 ```
 
-![Ping response](images/ping-response.png)
+![Ping response](img/ping.png)
 
 If the target responds to the ping requests, it means that the machine is reachable over the network. You can stop the command by pressing `Ctrl + C`.
 
@@ -49,7 +57,7 @@ After confirming that the target was reachable, I used Nmap to check which servi
 nmap -sV <TARGET_IP>
 ```
 
-![Nmap scan results](images/nmap-scan.png)
+![Nmap scan results](img/nmap.png)
 
 From the scan results, we can see that the target has an open Telnet service on port 23. Telnet allows users to access a remote machine through a text-based terminal.
 
@@ -63,7 +71,7 @@ I used Telnet to connect to the target machine.
 telnet <TARGET_IP> 23
 ```
 
-![Telnet connection](images/telnet-connection.png)
+![Telnet connection](img/Telnet.png)
 
 After connecting, the service asked me to log in. Sometimes, due to configuration mistakes, accounts may be left with blank passwords, making it easier for unauthorized users to access the system.
 
@@ -73,7 +81,7 @@ I decided to test whether I could log in without providing a password.
 
 I tried using `root` as the username and leaving the password blank to see whether the machine allowed access without a password.
 
-![Telnet login](images/telnet-login.png)
+![Telnet login](img/root.png)
 
 The login was successful, and I was able to access the machine as the root user.
 
@@ -87,7 +95,7 @@ After gaining access, I used the `ls` command to list the files in the current d
 ls
 ```
 
-![Directory listing](images/directory-listing.png)
+![Directory listing](img/ls.png)
 
 The listing showed a file named `flag.txt`. This was the file I needed to read to complete the challenge, so I used the `cat` command to display its contents.
 
@@ -95,7 +103,7 @@ The listing showed a file named `flag.txt`. This was the file I needed to read t
 cat flag.txt
 ```
 
-![Flag output](images/flag-output.png)
+![Flag output](img/cat.png)
 
 The file contained the flag needed to complete the challenge. Keep in mind that the filename may be different in other challenges, so you should check the directory listing rather than assume the file will always be named `flag.txt`.
 
