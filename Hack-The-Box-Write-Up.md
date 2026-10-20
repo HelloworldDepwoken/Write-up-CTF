@@ -4,11 +4,15 @@
 
 ## 1. Setup
 
-To connect to the target machine, I used OpenVPN with the configuration file provided by Hack The Box (HTB). Alternatively, Pwnbox can be used to access the lab environment without configuring a VPN on your own computer.
+To connect to the target machine, I used OpenVPN with the configuration file provided by Hack The Box (HTB). Alternatively, you can use Pwnbox to access the lab environment without setting up a VPN on your own computer.
 
 ![OpenVPN connection](images/openvpn.png)
 
-After connecting to the VPN, I used the `ping` command with the target IP address to check whether the target machine was reachable.
+To get the target's IP address, press the **Start Machine** button on the HTB website.
+
+![Target IP address](images/target-ip.png)
+
+After connecting to the VPN, I used the `ping` command with the target's IP address to check whether the machine was reachable.
 
 ```bash
 ping <TARGET_IP>
@@ -16,9 +20,9 @@ ping <TARGET_IP>
 
 ![Ping response](images/ping-response.png)
 
-If the target responds to the ping requests, it indicates that the machine is reachable over the network. You can stop the command by pressing `Ctrl + C`.
+If the target responds to the ping requests, it means that the machine is reachable over the network. You can stop the command by pressing `Ctrl + C`.
 
-After verifying the connection, I was ready to investigate the target machine.
+Now that the connection is working, we are ready to start investigating the target machine.
 
 ## 2. Tools Used
 
@@ -39,7 +43,7 @@ After verifying the connection, I was ready to investigate the target machine.
 
 ### 4.1 Scanning the Target
 
-After confirming network connectivity, I used Nmap to identify the services running on the target machine.
+After confirming that the target was reachable, I used Nmap to check which services were running on the machine.
 
 ```bash
 nmap -sV <TARGET_IP>
@@ -47,7 +51,7 @@ nmap -sV <TARGET_IP>
 
 ![Nmap scan results](images/nmap-scan.png)
 
-The scan revealed an open Telnet service on port 23. Telnet is a protocol that allows remote access to a machine through a text-based terminal.
+From the scan results, we can see that the target has an open Telnet service on port 23. Telnet allows users to access a remote machine through a text-based terminal.
 
 Since the service was accessible, I decided to investigate whether I could connect to it.
 
@@ -61,21 +65,23 @@ telnet <TARGET_IP> 23
 
 ![Telnet connection](images/telnet-connection.png)
 
-The service presented a login prompt. This meant I needed to investigate whether valid credentials were required to access the machine.
+After connecting, the service asked me to log in. Sometimes, due to configuration mistakes, accounts may be left with blank passwords, making it easier for unauthorized users to access the system.
+
+I decided to test whether I could log in without providing a password.
 
 ### 4.3 Testing Authentication
 
-I tested the `root` username with a blank password to check whether the service allowed access without a password.
+I tried using `root` as the username and leaving the password blank to see whether the machine allowed access without a password.
 
 ![Telnet login](images/telnet-login.png)
 
-The login succeeded, allowing me to access the machine as the root user.
+The login was successful, and I was able to access the machine as the root user.
 
-This demonstrated a serious authentication weakness: the account could be accessed without a password. On a real system, this could allow an unauthorized user to gain extensive control over the machine.
+This revealed a serious authentication weakness. Since the root account has extensive privileges, allowing access without a password could give an unauthorized user significant control over the machine.
 
 ### 4.4 Finding the Flag
 
-After gaining access, I used `ls` to list the files in the current directory.
+After gaining access, I used the `ls` command to list the files in the current directory and see whether I could find what I was looking for.
 
 ```bash
 ls
@@ -83,7 +89,7 @@ ls
 
 ![Directory listing](images/directory-listing.png)
 
-The listing revealed the `flag.txt` file. I used the `cat` command to read its contents.
+The listing showed a file named `flag.txt`. This was the file I needed to read to complete the challenge, so I used the `cat` command to display its contents.
 
 ```bash
 cat flag.txt
@@ -91,24 +97,24 @@ cat flag.txt
 
 ![Flag output](images/flag-output.png)
 
-The file contained the flag required to complete the challenge.
+The file contained the flag needed to complete the challenge. Keep in mind that the filename may be different in other challenges, so you should check the directory listing rather than assume the file will always be named `flag.txt`.
 
 ## 5. Findings
 
-The challenge demonstrated how an exposed remote-access service and weak authentication can allow unauthorized access to a machine.
+This challenge demonstrated how an exposed remote-access service combined with weak authentication can allow unauthorized access to a machine and its files.
 
 The main steps were:
 
-1. Verified connectivity to the target machine.
+1. Checked whether the target machine was reachable.
 2. Used Nmap to identify the open Telnet service.
-3. Connected to Telnet and tested whether authentication could be bypassed using a blank password.
-4. Accessed the machine and located the flag file.
+3. Connected to Telnet and tested whether the root account could be accessed with a blank password.
+4. Gained access to the machine and located the flag file.
 
 ## 6. Lessons Learned
 
-- **Network connectivity:** Learned how to check whether a target machine is reachable using `ping`.
+- **Network connectivity:** Learned how to use `ping` to check whether a target machine is reachable.
 - **Service enumeration:** Learned how Nmap can identify open ports and running services.
-- **Authentication security:** Learned why accounts should use strong authentication and never rely on blank passwords.
+- **Authentication security:** Learned why accounts should never be left with blank passwords, especially accounts with high privileges.
 - **Linux commands:** Practiced using `ls` to list files and `cat` to read file contents.
 
-In a real environment, Telnet should generally be replaced with a secure alternative such as SSH, and accounts should be protected with appropriate authentication controls.
+In a real environment, Telnet should generally be replaced with a more secure alternative, such as SSH, and all accounts should use appropriate authentication controls.
