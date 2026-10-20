@@ -20,7 +20,7 @@ To get the target's IP address, I pressed the **Start Machine** button on the HT
 
 ![Get IP address](img/Start.png)
 
-After waiting for a while, the target machine's IP address appeared on the page.
+After waiting for a while, the target machine's IP address appeared on the page. Keep in mind that the IP address may change each time you start a machine, so make sure to use the IP address currently displayed on the HTB website..
 
 ![IP address](img/IP.png)
 
