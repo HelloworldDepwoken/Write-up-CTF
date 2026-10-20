@@ -104,7 +104,7 @@ ls
 The listing showed a file named `flag.txt`. This was the file I needed to read to complete the challenge, so I used the `cat` command to display its contents.
 
 ```bash
-cat flag.txt
+cat <Traget_file>
 ```
 
 ![Flag output](img/Cat.png)
