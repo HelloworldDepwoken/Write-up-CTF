@@ -55,7 +55,7 @@ Now that the connection was set up, I was ready to start investigating the targe
 
 ### 4.1 Scanning the Target
 
-After confirming that the target was reachable, I used Nmap to check which services were running on the machine.
+After checking that the target machine was reachable, I looked at the information provided on the HTB website. My next step was to investigate which services were running on the machine, so I used Nmap to scan the target and identify its open ports and running services.
 
 ```bash
 nmap -sV <TARGET_IP>
