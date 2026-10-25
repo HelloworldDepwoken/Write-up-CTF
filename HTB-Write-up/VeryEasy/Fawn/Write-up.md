@@ -19,11 +19,11 @@ To get the target's IP address, I pressed the **Start Machine** button on the HT
 
 ![Get IP address](ImgF/Pwan.png)
 
-After waiting for a while, the target machine's IP address appeared on the page. Keep in mind that the IP address may change each time you start a machine, so make sure to use the IP address currently displayed on the HTB website..
+After waiting for a while, the target machine's IP address will appeared on the page. Keep in mind that the IP address may change each time you start a machine, so make sure to use the IP address currently displayed on the HTB website.
 
 ![IP address](ImgF/FawnIP.png)
 
-After connecting to the VPN, I used the `ping` command with the target's IP address to check whether the machine was reachable.
+After connecting to the VPN, I used `ping` command with the target's IP address to check whether the machine was reachable.
 
 ```bash
 ping <TARGET_IP>
@@ -37,17 +37,30 @@ Now that the connection was set up, I was ready to start investigating the targe
 
 ## 2. Tools Used
 
-- **Nmap:** To scan the target and identify open ports and services.
-- **Telnet:** To investigate the Telnet service running on the target.
+- **Nmap:** Nmap is used to scan the target machine by sending network packets to its ports and analyzing the responses. These responses help determine which ports are open, closed, or filtered by a firewall. It can also identify the services running on open ports. When using the `-sV` option, Nmap sends additional probes to identify the services and their versions, if possible. This information helps us understand what the target machine is running and decide which services need further investigation. Knowing the service version can also help us identify potential vulnerabilities.
+  
+- **FTP (File Transfer Protocol):** FTP uses TCP to communicate between a client and a server. It commonly uses port 21 for the control connection, which carries commands such as listing directories and requesting files. During file transfers, FTP uses a separate data connection to transfer file contents or directory listings. How this data connection is established depends on whether FTP is operating in active or passive mode. When a data transfer finishes, the data connection is typically closed, while the control connection remains open for additional commands until the user disconnects.
 
 ## 3. Commands Used
 
 | Command                | Purpose                                              |
 | ---------------------- | ---------------------------------------------------- |
 | `nmap -sV <TARGET_IP>` | Scan the target and identify running services.       |
-| `telnet <TARGET_IP>`   | Attempt to connect to the Telnet service.            |
+| `FTP <TARGET_IP>`      | Attempt to connect to the FTP service.               |
 | `ls`                   | List files and directories in the current directory. |
 | `cat <FILE>`           | Display the contents of a file.                      |
+| `Fwd`                  | Display the Currently path you are on                |
+| `cat <FILE>`           | Display the contents of a file.                      |
+| `Get <FILE>`           | Download the File from FTP Service into your own computer.|
+
+| Command | Purpose |
+|---|---|
+| `nmap -sV <TARGET_IP>` | Scan the target machine and identify its running services and versions. |
+| `ftp <TARGET_IP>` | Connect to the target machine's FTP service. |
+| `ls` | List the files and directories in the current directory. |
+| `cat <FILE>` | Display the contents of a file. |
+| `pwd` | Check the current working directory. |
+| `get <FILE>` | Download a file from the FTP server to my computer. |
 
 ## 4. Enumeration
 
