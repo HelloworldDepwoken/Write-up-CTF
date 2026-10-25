@@ -38,8 +38,9 @@ Now that the connection was set up, I was ready to start investigating the targe
 
 ## 2. Tools Used
 
-- **Nmap:** Used to scan the target machine for open ports and identify running services.
-- **Telnet:** Used to connect to the Telnet service discovered during enumeration.
+- **Nmap:** Nmap scans a target machine by sending network packets to its ports and analyzing the responses. These responses help determine which ports are open, closed, or filtered by a firewall. It can also identify the services running on open ports. When using the -sV option, Nmap sends additional probes to identify the service and, when possible, its version. This information helps us understand what the target machine is running and decide which services need further investigation.
+ 
+- **Telnet:** Telnet is a network protocol that allows users to interact with a remote machine through a text-based interface. It uses TCP to establish a connection with the target's Telnet service, which commonly listens on port 23. The connection is established through a TCP three-way handshake, in which the client sends a SYN packet, the server responds with SYN-ACK, and the client sends an ACK packet. After establishing the connection, the client and server can exchange data using the Telnet protocol. Depending on the server's configuration, this connection may allow the user to access a command-line interface. However, Telnet does not encrypt its communication, making transmitted data vulnerable to intercept
 
 ## 3. Commands Used
 
