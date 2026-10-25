@@ -43,16 +43,6 @@ Now that the connection was set up, I was ready to start investigating the targe
 
 ## 3. Commands Used
 
-| Command                | Purpose                                              |
-| ---------------------- | ---------------------------------------------------- |
-| `nmap -sV <TARGET_IP>` | Scan the target and identify running services.       |
-| `FTP <TARGET_IP>`      | Attempt to connect to the FTP service.               |
-| `ls`                   | List files and directories in the current directory. |
-| `cat <FILE>`           | Display the contents of a file.                      |
-| `Fwd`                  | Display the Currently path you are on                |
-| `cat <FILE>`           | Display the contents of a file.                      |
-| `Get <FILE>`           | Download the File from FTP Service into your own computer.|
-
 | Command | Purpose |
 |---|---|
 | `nmap -sV <TARGET_IP>` | Scan the target machine and identify its running services and versions. |
