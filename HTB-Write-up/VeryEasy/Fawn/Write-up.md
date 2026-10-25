@@ -5,7 +5,7 @@
 
 To connect to the target machine, I used OpenVPN with the configuration file provided by Hack The Box (HTB). Alternatively, you can use Pwnbox to access the lab environment without setting up a VPN on your own computer.
 
-![OpenVPN connection](imgF/openVPN.png)
+![OpenVPN connection](imgF/OpenVPN.png)
 
 After downloading the Starting Point VPN configuration file, I opened the terminal and ran the following command to connect to the VPN.
 
