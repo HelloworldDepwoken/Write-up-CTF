@@ -21,7 +21,7 @@ To get the target's IP address, I pressed the **Start Machine** button on the HT
 
 After waiting for a while, the target machine's IP address appeared on the page. Keep in mind that the IP address may change each time you start a machine, so make sure to use the IP address currently displayed on the HTB website..
 
-![IP address](ImgF/IP.png)
+![IP address](ImgF/FwanIP.png)
 
 After connecting to the VPN, I used the `ping` command with the target's IP address to check whether the machine was reachable.
 
@@ -29,7 +29,7 @@ After connecting to the VPN, I used the `ping` command with the target's IP addr
 ping <TARGET_IP>
 ```
 
-![Ping response](img/ping.png)
+![Ping response](img/IP.png)
 
 If the target responds to the ping requests, it indicates that the machine is reachable over the network. You can stop the command by pressing `Ctrl + C`. However, some machines block ping requests, so no response does not always mean the machine is offline.
 
