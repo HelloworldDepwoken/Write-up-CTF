@@ -134,7 +134,9 @@ The server returned response code `221`, indicating that the FTP session was bei
 
 ### Reading the Downloaded File
 
-After disconnecting from the FTP server, I checked my current working directory using `pwd`.
+After downloading the file, I could have opened it directly from my file manager. However, I decided to stay in the terminal so I wouldn't need to open another window.
+
+First, I used the `pwd` command to check my current working directory.
 
 ```bash
 pwd
@@ -142,7 +144,7 @@ pwd
 
 ![Current working directory](ImgF/Pwd.png)
 
-The output showed the path of my current directory. I then used `ls` to check whether the downloaded file was present.
+The output showed the path of my current directory. Next, I used `ls` to check whether the downloaded file was in that directory.
 
 ```bash
 ls
@@ -150,7 +152,7 @@ ls
 
 ![Downloaded file](ImgF/ls.png)
 
-The file appeared in the directory, so I used `cat` to display its contents.
+I found the downloaded file in the directory, so I used `cat` to display its contents.
 
 ```bash
 cat <FLAG_FILE>
@@ -177,7 +179,3 @@ I also learned the basic FTP workflow: connecting to a server, authenticating, l
 Another important lesson was that anonymous FTP access can expose files if the server is not configured with appropriate access restrictions. In addition, standard FTP does not encrypt its communication by default, making secure alternatives such as SFTP preferable when confidentiality is required.
 
 In future investigations, I would examine the permissions and accessible files of any discovered service to understand what information might be exposed.
-
-## 6. Lessons Learned
-
-Summarize the technical concepts you learned and what you would investigate differently next time.
