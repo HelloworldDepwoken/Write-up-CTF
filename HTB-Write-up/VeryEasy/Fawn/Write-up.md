@@ -82,17 +82,17 @@ I used the following command to connect to the target's FTP service.
 ftp <TARGET_IP>
 ```
 
-![FTP connection](ImgF/FTP.png)
+![FTP connection](ImgF/FTPconnect.png)
 
 After connecting, the server returned the response code `220`, which indicates that the FTP service is ready to receive commands.
 
 The server then requested a username. I decided to try `anonymous` to check whether the server allowed anonymous FTP access.
 
-![FTP username](ImgF/FTP_User.png)
+![FTP username](ImgF/FTPanonymous.png)
 
 After entering `anonymous` as the username, the server requested a password. I pressed Enter to try logging in without providing a password.
 
-![Anonymous FTP login](ImgF/FTP_Anonymous.png)
+![Anonymous FTP login](ImgF/FTPLogin.png)
 
 The login was successful, and the server returned response code `230`, indicating that the user had logged in successfully.
 
@@ -106,7 +106,7 @@ After logging in, I used the `ls` command to list the files and directories avai
 ls
 ```
 
-![Files listed through FTP](ImgF/FTP_Ls.png)
+![Files listed through FTP](ImgF/ls.png)
 
 The listing revealed the flag file I was looking for.
 
@@ -122,7 +122,7 @@ get <FLAG_FILE>
 
 Replace `<FLAG_FILE>` with the actual filename shown in the FTP directory listing.
 
-![Downloading the flag](ImgF/FTP_Get.png)
+![Downloading the flag](ImgF/Get.png)
 
 After downloading the file, I used `bye` to exit the FTP session.
 
@@ -150,17 +150,13 @@ The output showed the path of my current directory. Next, I used `ls` to check w
 ls
 ```
 
-![Downloaded file](ImgF/ls.png)
+![Downloaded file](ImgF/lsHome.png)
 
 I found the downloaded file in the directory, so I used `cat` to display its contents.
 
 ```bash
 cat <FLAG_FILE>
 ```
-
-![Flag contents](ImgF/Cat.png)
-
-The command displayed the flag, confirming that I had successfully retrieved the file from the target machine.
 
 ## 5. Findings
 
