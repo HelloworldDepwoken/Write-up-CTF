@@ -53,8 +53,25 @@ Now that the connection was set up, I was ready to start investigating the targe
 | `get <FILE>` | Download a file from the FTP server to my computer. |
 
 ## 4. Enumeration
-
-Document the scan results, the services you identified, and why you decided to investigate them.
+so at first right after we are making sure that the server was reachable i use nmap to see which service was running on the server Nmap -sV [Target IP]
+![nmap](ImgF/)
+as we can see i found that the server was running a FTP service an FTP service is on Service that using for Transfer a File mostly it open on port 21 but FTP is an old service that mostly running on Legacy server because the FTP service Transfer a File with out encyption them and some even allow to login using Username as anonymous the in newwer version it should use SFTP so right in about that we will try to reach the service by using FTP [Target IP] 
+![FTP](ImgF/)
+and we are in one way to see if we were in the service is by checking the responds code by the succe connect it will show us 220 and now it asking for the username so let try using Anonymous if it work 
+![FTP_User](ImgF/)
+as we are in it asking for the password left it blank or just press enter because we are in by using annoymous 
+![FTP_Anonymous](ImgF/)
+ah it work and now we are in the server by checking the responds code by the succe Login it will show us 230 and as we are in let see what we can found so frist i will use ls to check what file inside the Server
+![FTP_Ls](ImgF/)
+and there the flag we are caming for and becuase the file was in the server we cannot use cat to see what inside the file we have to download it into our own computer using Get [file name] and if we were got everything we want just type in bye to disconnect from the server and the respond code of 221
+![FTP_Get](ImgF/)
+and after we are download the file we can open it by found the file in our meachine or just viwe it by using cat in this case i will use cat so first i will check what path we are on so i use Pwd command to check it Pwd
+![Pwd](ImgF/)
+as you can see the Pwd showing us the User name of the Login and a path after we know that let use ls to show if the file in this path ls
+![ls](ImgF/)
+and we can see it in now we viwe the file using Cat [File name]
+![Cat](ImgF/)
+and we got the flag
 
 ## 5. Findings
 
